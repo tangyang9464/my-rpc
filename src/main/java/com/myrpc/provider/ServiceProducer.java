@@ -1,10 +1,12 @@
 package com.myrpc.provider;
 
 import com.myrpc.core.registry.ZkServiceRegistry;
+import com.myrpc.core.registry.zk.CuratorUtil;
 
 import java.net.InetSocketAddress;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * @author: tangyang9464
@@ -24,5 +26,19 @@ public class ServiceProducer {
     }
     public Object getService(String serviceName){
         return serviceMap.getOrDefault(serviceName,null);
+    }
+
+    public void clearAllService(){
+        if(serviceMap==null){
+            return;
+        }
+        Set<String> services = serviceMap.keySet();
+        for(String serviceName:services){
+            clearService(serviceName);
+        }
+    }
+
+    public void clearService(String serviceName) {
+        CuratorUtil.deleteNode(serviceName);
     }
 }

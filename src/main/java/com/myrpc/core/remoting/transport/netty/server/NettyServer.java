@@ -2,6 +2,7 @@ package com.myrpc.core.remoting.transport.netty.server;
 
 import com.myrpc.core.remoting.transport.netty.codec.HessianDecoder;
 import com.myrpc.core.remoting.transport.netty.codec.HessianEncoder;
+import com.myrpc.provider.ServiceProducer;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -38,6 +39,15 @@ public class NettyServer {
             });
             //启动
             ChannelFuture channelFuture = bootstrap.bind(port).sync();
+            //销毁服务
+            Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    System.out.println("clear");
+                    ServiceProducer serviceProducer = new ServiceProducer();
+                    serviceProducer.clearAllService();
+                }
+            }));
             log.info("服务器启动");
             //管道关闭
             channelFuture.channel().closeFuture().sync();

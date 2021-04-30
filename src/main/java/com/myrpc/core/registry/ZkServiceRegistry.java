@@ -12,9 +12,8 @@ import java.net.InetSocketAddress;
  **/
 @Slf4j
 public class ZkServiceRegistry implements ServiceRegistry{
-
     public void register(String serviceName, InetSocketAddress serviceAddress) {
-        String path = CuratorUtil.ZK_REGISTER_ROOT_PATH + "/" + serviceName + serviceAddress.toString();
+        String path = CuratorUtil.ZK_REGISTER_ROOT_PATH + serviceName + serviceAddress.toString();
         CuratorUtil.createPersistentNode(path);
     }
 }

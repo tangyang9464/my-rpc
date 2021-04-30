@@ -11,8 +11,10 @@ public class ServerMain {
     public static void main(String[] args) throws Exception{
         NettyServer nettyServer = new NettyServer();
         ServiceProducer serviceProducer = new ServiceProducer();
-        int port = 9090;
+        int port = 9191;
+        //发布服务
         serviceProducer.publish(TestServiceImpl.class,port);
-         nettyServer.run(port);
+        //启动网络传输server
+        nettyServer.run(port);
     }
 }
