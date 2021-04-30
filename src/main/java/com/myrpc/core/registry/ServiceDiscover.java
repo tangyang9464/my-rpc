@@ -1,6 +1,5 @@
-package com.myrpc.registry;
+package com.myrpc.core.registry;
 
-import java.net.InetAddress;
 import java.net.InetSocketAddress;
 
 public interface ServiceDiscover {

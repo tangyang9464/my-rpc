@@ -1,4 +1,4 @@
-package com.myrpc.server;
+package com.myrpc.testServer;
 
 
 import com.myrpc.api.HelloService;

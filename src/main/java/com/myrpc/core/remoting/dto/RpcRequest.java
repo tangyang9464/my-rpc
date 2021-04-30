@@ -1,4 +1,4 @@
-package com.myrpc.http;
+package com.myrpc.core.remoting.dto;
 
 import lombok.Data;
 import lombok.experimental.Accessors;

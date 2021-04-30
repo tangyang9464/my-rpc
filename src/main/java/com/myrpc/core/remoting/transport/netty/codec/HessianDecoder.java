@@ -1,4 +1,4 @@
-package com.myrpc.serialize;
+package com.myrpc.core.remoting.transport.netty.codec;
 
 import com.caucho.hessian.io.Hessian2Input;
 import io.netty.buffer.ByteBuf;

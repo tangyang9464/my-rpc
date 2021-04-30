@@ -1,4 +1,4 @@
-package com.myrpc.registry.zk;
+package com.myrpc.core.registry.zk;
 
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;

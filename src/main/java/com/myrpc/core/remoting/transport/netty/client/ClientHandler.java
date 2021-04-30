@@ -1,6 +1,6 @@
-package com.myrpc.client;
+package com.myrpc.core.remoting.transport.netty.client;
 
-import com.myrpc.http.RpcResponse;
+import com.myrpc.core.remoting.dto.RpcResponse;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.util.AttributeKey;

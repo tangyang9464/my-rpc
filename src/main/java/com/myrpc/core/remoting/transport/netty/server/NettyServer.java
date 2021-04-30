@@ -1,8 +1,7 @@
-package com.myrpc.server;
+package com.myrpc.core.remoting.transport.netty.server;
 
-import com.myrpc.registry.ZkServiceRegistry;
-import com.myrpc.serialize.HessianDecoder;
-import com.myrpc.serialize.HessianEncoder;
+import com.myrpc.core.remoting.transport.netty.codec.HessianDecoder;
+import com.myrpc.core.remoting.transport.netty.codec.HessianEncoder;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -11,10 +10,6 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 
 import lombok.extern.slf4j.Slf4j;
-
-import java.net.InetAddress;
-import java.net.InetSocketAddress;
-import java.net.UnknownHostException;
 
 /**
  * @author: tangyang9464
@@ -51,8 +46,6 @@ public class NettyServer {
             worker.shutdownGracefully().sync();
         }
     }
-    public <T> void publish(Class<T> clazz, int port) throws UnknownHostException {
-        ZkServiceRegistry registry = new ZkServiceRegistry();
-        registry.register(clazz.getName(),new InetSocketAddress("127.0.0.1",port));
-    }
+
+
 }

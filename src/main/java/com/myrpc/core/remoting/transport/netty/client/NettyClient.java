@@ -1,8 +1,8 @@
-package com.myrpc.client;
+package com.myrpc.core.remoting.transport.netty.client;
 
-import com.myrpc.http.RpcRequest;
-import com.myrpc.serialize.HessianDecoder;
-import com.myrpc.serialize.HessianEncoder;
+import com.myrpc.core.remoting.dto.RpcRequest;
+import com.myrpc.core.remoting.transport.netty.codec.HessianDecoder;
+import com.myrpc.core.remoting.transport.netty.codec.HessianEncoder;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
@@ -13,7 +13,6 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.util.AttributeKey;
 import lombok.extern.slf4j.Slf4j;
 
-import java.net.InetAddress;
 
 /**
  * @author: tangyang9464

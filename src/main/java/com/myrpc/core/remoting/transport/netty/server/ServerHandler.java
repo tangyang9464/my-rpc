@@ -1,7 +1,8 @@
-package com.myrpc.server;
+package com.myrpc.core.remoting.transport.netty.server;
 
-import com.myrpc.http.RpcRequest;
-import com.myrpc.http.RpcResponse;
+import com.myrpc.core.remoting.dto.RpcRequest;
+import com.myrpc.core.remoting.dto.RpcResponse;
+import com.myrpc.provider.ServiceProducer;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import lombok.extern.slf4j.Slf4j;
@@ -23,9 +24,10 @@ public class ServerHandler extends ChannelInboundHandlerAdapter{
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         log.info("服务端接收到请求");
         RpcRequest rpcRequest = (RpcRequest)msg;
-        HelloServiceImpl helloService = new HelloServiceImpl();
-        Method method = helloService.getClass().getMethod(rpcRequest.getMethodName(),rpcRequest.getParamType());
-        Object data = method.invoke(helloService,rpcRequest.getParam());
+        ServiceProducer serviceProducer = new ServiceProducer();
+        Object service = serviceProducer.getService(rpcRequest.getInterfaceName());
+        Method method = service.getClass().getMethod(rpcRequest.getMethodName(),rpcRequest.getParamType());
+        Object data = method.invoke(service,rpcRequest.getParam());
 
         ctx.writeAndFlush(RpcResponse.success(data));
         ctx.writeAndFlush(msg);

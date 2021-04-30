@@ -1,10 +1,8 @@
-package com.myrpc.registry;
+package com.myrpc.core.registry;
 
-import com.myrpc.registry.zk.CuratorUtil;
+import com.myrpc.core.registry.zk.CuratorUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.curator.framework.CuratorFramework;
 
-import java.net.InetAddress;
 import java.net.InetSocketAddress;
 
 
